@@ -14,6 +14,27 @@
 <body>
     <script src="./bigClock.js"></script> <!-- Al pendejo se le olvido poner el script jsjs -->
 
+    <div class="testEquip" id="testE">
+        <button onclick="changeAmPm()">Change Format</button>
+        <div id="ch-1">
+            <h3>Change Primary Color</h3>
+            <input value="#93aaee" type="color" oninput="changeColor('color1','--primaryColor')" onchange="changeColor('color1','--primaryColor')" id="color1">
+        </div>
+        <div id="ch-2">
+            <h3>Change Gradient Color</h3>
+            <input value="#211f3c" type="color" oninput="changeColor('color2','--secondaryColor')" onchange="changeColor('color2','--secondaryColor')" id="color2">
+        </div>
+        <div id="ch-3">
+            <h3>Change Accent Color</h3>
+            <input value="#fff" type="color" oninput="changeColor('color3','--accentColor')" onchange="changeColor('color3','--accentColor')" id="color3">
+        </div>
+        <div id="ch-4">
+            <h3>Change Background Color</h3>
+            <input value="#000000" type="color" oninput="changeColor('color4','--backgroundColor')" onchange="changeColor('color4','--backgroundColor')" id="color4">
+        </div>
+        <button id="tohide" onclick="hideMe()">HideMe</button>
+    </div>
+
 
     <div id="clock">
         <div id="numbers">
@@ -42,16 +63,18 @@
             </div>
 
             
-
-            <div id="notes">
-                <h4 id="icon">◉</h4>
-                <h4 class="opacityLow">-</h4>
-                <h4 id="notes_text">late to sleep</h4>
+            <div id="idk">
+                <div id="notes">
+                    <h4 id="icon">◉</h4>
+                    <h4 class="opacityLow">-</h4>
+                </div>
+                <input type="text" id="notes_text" value="late to sleep">
+    
             </div>
+            
         </div>
     </div>
-    
-    <h1 id="Test">s</h1>
+
     
     
 </body>

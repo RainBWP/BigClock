@@ -14,10 +14,7 @@ let musicColor2 = '#eee'
 let msgText = 'Anything can be here';
 
 
-function changeAmPm() {
-    _24format = !_24format
-    updateTime()
-}
+
 
 const numDays = {0:'Sun',
             1:'Mon',
@@ -92,152 +89,25 @@ function nextUpdate() {
 setTimeout(initClock, 100)
 
 
-/* Wallpaper Engine Code */
-window.wallpaperPropertyListener = {
-    applyUserProperties: function(properties) {
-        
+/* Web Functions */
 
-        /* Colors */
-        if (properties.backgroundcoloruser) {
-            var customColor = properties.backgroundcoloruser.value.split(' ');
-            customColor = customColor.map(function(c) {
-                return Math.ceil(c * 255);
-            });
-            backgroundColor = 'rgb(' + customColor + ')';
-            document.documentElement.style.setProperty('--backgroundColor', 'rgb(' + customColor + ')');
-        }
-        if (properties.gradiantcolot) {
-            var customColor = properties.gradiantcolot.value.split(' ');
-            customColor = customColor.map(function(c) {
-                return Math.ceil(c * 255);
-            });
-            secondaryColor = 'rgb(' + customColor + ')';
-            document.documentElement.style.setProperty('--secondaryColor', 'rgb(' + customColor + ')');
-        }
-        if (properties.accentcoloruser) {
-            var customColor = properties.accentcoloruser.value.split(' ');
-            customColor = customColor.map(function(c) {
-                return Math.ceil(c * 255);
-            });
-            accentColor = 'rgb(' + customColor + ')';
-            document.documentElement.style.setProperty('--accentColor', 'rgb(' + customColor + ')');
-        }
-        if (properties.schemecolor) { // lets see
-            var customColor = properties.schemecolor.value.split(' ');
-            customColor = customColor.map(function(c) {
-                return Math.ceil(c * 255);
-            });
-            primaryColor = 'rgb(' + customColor + ')';
-            document.documentElement.style.setProperty('--primaryColor', 'rgb(' + customColor + ')');
-        }
-
-        /* text */
-        if (properties.msguser) {
-            const msg = properties.msguser.value;
-            msgText = msg
-            document.getElementById('notes_text').innerHTML = msgText
-        }
-
-        /* bools */
-        if (properties._24hrsformatcheckbox) {
-            _24format = properties._24hrsformatcheckbox.value;
-            updateTime();
-        }
-        if (properties.musicchangecolors) {
-            musicCode = properties.musicchangecolors.value;
-        }
-    },
-};
-
-function wallpaperMediaStatusListener(event) {
-    musicEnabled = event.enabled
-}
-window.wallpaperRegisterMediaStatusListener(wallpaperMediaStatusListener);
-
-function changeColors(color1,color2) {
-    document.documentElement.style.setProperty('--primaryColor', color1);
-    document.documentElement.style.setProperty('--secondaryColor', color2);
+function changeAmPm() {
+    _24format = !_24format
+    updateTime()
 }
 
-function notBrightOpaque(color) {
-
-    const R = color.split('#')[1].substring(0,2)
-    const G = color.split('#')[1].substring(2,4)
-    const B = color.split('#')[1].substring(4,6)
-
-
-    var RDecimal = parseInt(R,16)
-    var GDecimal = parseInt(G,16)
-    var BDecimal = parseInt(B,16)
-
-
-
-    if (RDecimal < 32) {
-        RDecimal = RDecimal + parseInt(RDecimal * 0.5 )+ 16;
-    }
-    if (RDecimal > 240) {
-        RDecimal = RDecimal - parseInt(RDecimal * 0.1);
-    }
-
-    if (GDecimal < 32) {
-        GDecimal= GDecimal + parseInt(GDecimal * 0.5)+ 16
-    }
-    if (GDecimal > 240) {
-        GDecimal= GDecimal - parseInt(GDecimal * 0.1)
-    }
-
-    if (BDecimal < 32) {
-        BDecimal= BDecimal + parseInt(BDecimal * 0.5)+ 16
-    }
-    if (RDecimal > 240) {
-        BDecimal= BDecimal - parseInt(BDecimal * 0.1)
-    }
-
-    
-    return `#${RDecimal.toString(16).padStart(2, '0')}${GDecimal.toString(16).padStart(2, '0')}${BDecimal.toString(16).padStart(2, '0')}`
+function changeColor(colorid,tochangeid) {
+    const color = document.getElementById(colorid).value
+    document.documentElement.style.setProperty(tochangeid, color);
 }
 
-function wallpaperMediaThumbnailListener(event) {
-
-    musicColor1 = notBrightOpaque(event.primaryColor)
-    musicColor2 = notBrightOpaque(notBrightOpaque(event.secondaryColor))
-    /* document.getElementById('notes_text').innerHTML = `${musicColor1} - ${musicColor2}` */
-
-    if (musicEnabled && musicCode && musicPlaying){
-        changeColors(musicColor2 , musicColor1)
-    }
-}
-window.wallpaperRegisterMediaThumbnailListener(wallpaperMediaThumbnailListener);
-
-function wallpaperMediaPlaybackListener(event) {
-    if (event.state == window.wallpaperMediaIntegration.PLAYBACK_STOPPED) {
-        changeColors(primaryColor,secondaryColor)
-        document.getElementById('notes_text').innerHTML = msgText
-        musicPlaying = false;
-
-    }
-    if (event.state == window.wallpaperMediaIntegration.PLAYBACK_PAUSED) {
-        changeColors(primaryColor,secondaryColor)
-    }
-    if (event.state == window.wallpaperMediaIntegration.PLAYBACK_PLAYING) {
-        musicPlaying = true;
-        changeColors(musicColor2 , musicColor1)
-    }
-}
-window.wallpaperRegisterMediaPlaybackListener(wallpaperMediaPlaybackListener);
-
-function getArtist(event) {
-    return event.artist.split(',')[0] || event.albumArtist.split(',')[0];
+function showMe() {
+    document.getElementById('testE').style.opacity = 1
+    document.getElementById('tohide').onclick = hideMe()
 }
 
-function wallpaperMediaPropertiesListener(event) {
-    if (musicCode && musicEnabled && musicPlaying) {
-        const songTitle = event.title.split('(')[0]
-
-
-        const artist = getArtist(event)
-
-        document.getElementById('notes_text').innerHTML = `${songTitle} - ${artist}`
-    }
+function hideMe(){
+    document.getElementById('testE').style.opacity = 0
+    document.getElementById('tohide').onclick = showMe()
 }
-window.wallpaperRegisterMediaPropertiesListener(wallpaperMediaPropertiesListener);
+
