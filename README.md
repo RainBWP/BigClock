@@ -1,9 +1,10 @@
-# BigClock
+# BigClock [Try it now](https://rainbwp.github.io/BigClock/)
 ![gif image](https://github.com/RainBWP/BigClock/blob/main/preview.gif?raw=true)
 
 Clock made with JS for WallpaperEngine
 # Download and install the wallpaper from: 
 [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3126347457)
+
 
 ## Color Reference
 
