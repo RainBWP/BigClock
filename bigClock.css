@@ -1,0 +1,169 @@
+:root {
+    --accentColor:#fff;
+    --primaryColor: #93aaee;
+    --secondaryColor: #211f3c;
+    --backgroundColor: #000000;
+
+}
+
+@font-face {
+    font-family: 'Oswald VariableFont';
+    src: url('./Oswald-VariableFont_wght.ttf');
+}
+
+* {
+    margin: 0;
+    
+}
+
+body {
+    overflow: hidden;
+    background-color: var(--backgroundColor);
+}
+
+#clock {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#numbers,
+#_12hrsFormat,
+#date, 
+#notes,
+#notes_text
+{
+    color: var(--primaryColor);
+    font-family: 'Oswald VariableFont', sans-serif;
+    font-weight: lighter;
+    transition: all 1s ease-in-out;
+}
+
+
+
+#time,
+#pre-time {
+    align-items: center;
+    display: flex;
+    background: -webkit-linear-gradient(var(--primaryColor), var(--secondaryColor));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 1s ease-in-out;
+
+}
+#time {
+    z-index: 1;
+    /* transition: opacity 1s ease-in-out; */
+
+}
+
+#pre-time {
+    z-index: 2;
+    position: absolute;
+    /* transition: opacity 1s ease-in-out; */
+    opacity: 0;
+}
+
+
+#right_side {
+    position: absolute;
+    width: 43%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+#_12hrsFormat{
+    font-size: 10vmin;
+    display: flex;
+    align-items: center;
+}
+#am{
+    color: var(--accentColor);
+    justify-self: end;
+    right: 0;
+}
+
+#numbers {
+    position: absolute;
+    left: 0;
+    font-size: 12vmin;
+    width: 55%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-weight: bolder;
+    transition: all 1s ease-in-out;
+
+}
+#date {
+    display: flex;
+    font-size: 8vmin;
+}
+
+#testControls {
+    color: blue;
+    position: absolute;
+    z-index: 3;
+    display: flex;
+}
+
+#numDay{
+    color: var(--accentColor);
+}
+
+#notes,
+#notes_text {
+    height: 5vmin;
+    font-size: 5vmin;
+    display: flex;
+}
+
+#icon {
+    height: 5vmin;
+    color: var(--accentColor);
+
+}
+.oculto {
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    position: absolute;
+}
+.publico {
+    color: var(--primaryColor);
+    opacity: 1;
+    transition: all 1s ease-in-out;
+}
+.opacityLow{
+    opacity: 0;
+}
+.opacityHigh{
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+
+}
+
+/* @media screen and (max-width: 920px) {
+    #numbers {
+        font-size: 10vw;
+    }
+    #_12hrsFormat{
+        font-size: 5vw;
+
+    }
+    #date{
+        font-size: 5vh;
+
+    } 
+    #notes{
+        font-size: 5vh;
+    }
+    #notes_text{
+        font-size: 5vh;
+
+    }
+} */
