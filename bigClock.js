@@ -94,20 +94,47 @@ setTimeout(initClock, 100)
 function changeAmPm() {
     _24format = !_24format
     updateTime()
+    localStorage.setItem('_24format', _24format)
 }
 
 function changeColor(colorid,tochangeid) {
     const color = document.getElementById(colorid).value
     document.documentElement.style.setProperty(tochangeid, color);
+    localStorage.setItem(tochangeid,color)
 }
 
 function showMe() {
     document.getElementById('testE').style.opacity = 1
-    document.getElementById('tohide').onclick = hideMe()
+    localStorage.setItem('hideMe',1);
+    setTimeout(()=>{
+        document.getElementById('tohide').onclick = hideMe;
+    },100)
+    
+
 }
 
 function hideMe(){
-    document.getElementById('testE').style.opacity = 0
-    document.getElementById('tohide').onclick = showMe()
+    document.getElementById('testE').style.opacity = 0;
+    localStorage.setItem('hideMe',0);
+    setTimeout(()=>{
+        document.getElementById('tohide').onclick = showMe;
+    },100)
+    
+
 }
 
+setTimeout(()=>{
+    try {
+        _24format = localStorage.getItem('_24format')
+        console.log(localStorage.getItem('hideMe'))
+        document.getElementById('testE').style.opacity = localStorage.getItem('hideMe')
+        document.documentElement.style.setProperty('--primaryColor', localStorage.getItem('--primaryColor'))
+        document.documentElement.style.setProperty('--secondaryColor', localStorage.getItem('--secondaryColor'))
+        document.documentElement.style.setProperty('--accentColor', localStorage.getItem('--accentColor'))
+        document.documentElement.style.setProperty('--backgroundColor', localStorage.getItem('--backgroundColor'))
+        updateTime()
+    } catch (error) {
+        console.error(error)
+    }
+    
+},100)

@@ -172,6 +172,7 @@ body {
     
 }
 .testEquip div{
+    display: grid;
     padding: 10px;
     overflow: hidden;
     border-radius: 10px;
