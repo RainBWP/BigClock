@@ -70,7 +70,7 @@ function updateTime(){
             if (hours === 0) {
                 document.getElementById('hours').innerHTML = 12
             } else{
-                document.getElementById('hours').innerHTML = (miVariable === 0) ? 12 : miVariable
+                document.getElementById('hours').innerHTML = hours
 
             }
         }
