@@ -7,12 +7,30 @@
 }
 
 @font-face {
-    font-family: 'Oswald VariableFont';
-    src: url('./Oswald-VariableFont_wght.ttf');
+    font-family: 'Oswald';
+    src: url('./Oswald-VariableFont_wght.woff');
+}
+
+/* Add webkit prefixes to CSS properties */
+
+
+#time {
+    -webkit-animation: gradient 5s linear infinite;
+    animation: gradient 5s linear infinite;
+}
+
+#pre-time {
+    -webkit-animation: gradient 5s linear infinite;
+    animation: gradient 5s linear infinite;
+}
+html{
+    -webkit-font-smoothing: antialiased;
+
 }
 
 * {
     margin: 0;
+    font-family: 'Oswald', Helvetica, sans-serif;
     
 }
 
@@ -37,7 +55,6 @@ body {
 .testEquip
 {
     color: var(--primaryColor);
-    font-family: 'Oswald VariableFont', sans-serif;
     font-weight: lighter;
     transition: all 1s ease-in-out;
 }
@@ -97,7 +114,7 @@ body {
     display: flex;
     justify-content: end;
     align-items: center;
-    font-weight: bolder;
+    font-weight: 900;
     transition: all 1s ease-in-out;
 
 }
@@ -181,7 +198,6 @@ body {
     padding: 10px;
     overflow: hidden;
     border-radius: 10px;
-    font-family: 'Oswald VariableFont', sans-serif;
     font-size: 30px;
     background-color: var(--backgroundColor);
     color: var(--primaryColor);
